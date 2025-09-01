@@ -1,0 +1,110 @@
+package com.swaglabs.Pages;
+
+import com.swaglabs.Utils.JSUtils;
+import com.swaglabs.Utils.LogsUtils;
+import com.swaglabs.Utils.Waits;
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+public class SearchPageTwo
+{
+ //Locators
+ private final WebDriver driver;
+
+ private By clickonsecondpage=By.xpath("//a[@aria-label='Page 2']");
+ private By searchResultsSecondPage= By.xpath("//a /h3");
+
+ private By clickonthirdpage=By.xpath("//a[@aria-label='Page 3']");
+ private By searchResultsThirdPage= By.xpath("//a /h3");
+
+
+
+
+ //constructor
+ public SearchPageTwo(WebDriver driver)
+ {
+  this.driver = driver;
+ }
+
+
+ // ================= ACTIONS =================
+
+ //click on page number 2
+
+ public void goToSecondPage()
+ {
+  LogsUtils.info("click on the 2 page ");
+
+  // Scroll to the page 2 link
+   JSUtils.scrollToElement(driver,clickonsecondpage);
+   // Wait until it's clickable
+  WebElement element2=Waits.WaitForElementToBeClickable(driver,clickonsecondpage);
+  element2.click();
+ }
+
+ //click on page number 3
+
+
+ public void goToThirdPage()
+ {
+  LogsUtils.info("click on the 2 page ");
+
+  // Scroll to the page 3 link
+  JSUtils.scrollToElement(driver,clickonthirdpage);
+  // Wait until it's clickable
+  WebElement element3=Waits.WaitForElementToBeClickable(driver,clickonthirdpage);
+  element3.click();
+ }
+
+
+ //validation
+ @Step("Count the number of results displayed on the second page")
+ public int Page2count ()
+ {
+  int counter1 = 0;
+ for ( WebElement element : driver.findElements(searchResultsSecondPage))
+ {
+  LogsUtils.info("Element on second page " + element.getText());
+   counter1++;
+ }
+
+  return counter1;
+ }
+
+
+
+ @Step("Count the number of results displayed on the third page")
+ public int Page3count ()
+ {
+  int counter2 = 0;
+  for ( WebElement element : driver.findElements(searchResultsThirdPage))
+  {
+   LogsUtils.info("Element on third page " + element.getText());
+   counter2++;
+  }
+
+  return counter2;
+ }
+
+@Step("verifyResultsCountIsEqualBetweenPage2AndPage3 ")
+ public void verifyResultsCountIsEqualBetweenPage2AndPage3()
+{
+ goToSecondPage();
+ int page2counter=Page2count();
+ goToThirdPage();
+int page3counter=Page3count();
+
+
+  Assert.assertEquals(page2counter,page3counter,
+
+          "❌ Number of results on Page 2 ( " + page2counter + " ) " +
+                  "is not equal to Page 3 ( "  + page3counter +")");
+
+}
+
+}

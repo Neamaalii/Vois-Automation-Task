@@ -1,0 +1,36 @@
+<suite name="ParallelSuite" parallel="tests" thread-count="3">
+
+    <test name=" Test One">
+        <parameter name="browserType" value="chrome" />
+        <classes>
+            <class name="com.swaglabs.Tests.TestCases" />
+            <methods>
+            <include name="success_Search"/>
+            </methods>
+
+        </classes>
+    </test>
+
+    <test name=" Test Two">
+        <parameter name="browserType" value="chrome" />
+        <classes>
+            <class name="com.swaglabs.Tests.TestCases" />
+            <methods>
+                <include name="success_Search"/>
+                <include name="verifyFirstSectionItemsContainVodafone"/>
+            </methods>
+        </classes>
+    </test>
+
+    <test name=" Test Three">
+        <parameter name="browserType" value="chrome" />
+        <classes>
+            <class name="com.swaglabs.Tests.TestCases" />
+            <methods>
+                <include name="success_Search"/>
+                <include name="comparebetween2results"/>
+            </methods>
+        </classes>
+    </test>
+
+</suite>

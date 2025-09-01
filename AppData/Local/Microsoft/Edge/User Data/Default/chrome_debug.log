@@ -1,0 +1,12 @@
+[65184:61340:0830/171739.939:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:68] Scheduling init
+[65184:61340:0830/171739.939:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:68] Scheduling init
+[63244:66840:0830/171740.515:INFO:third_party\webrtc\rtc_base\cpu_info.cc:88] Available number of cores: 8
+[64080:65624:0830/171740.547:INFO:third_party\webrtc\rtc_base\cpu_info.cc:88] Available number of cores: 8
+[64372:65460:0830/171740.557:VERBOSE1:components\viz\service\main\viz_main_impl.cc:86] VizNullHypothesis is disabled (not a warning)
+[65184:61340:0830/171744.001:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+[4448:63616:0830/171744.012:INFO:third_party\webrtc\rtc_base\cpu_info.cc:88] Available number of cores: 8
+[65184:61340:0830/171744.091:INFO:CONSOLE:377] "-ms-high-contrast is in the process of being deprecated. Please see https://blogs.windows.com/msedgedev/2024/04/29/deprecating-ms-high-contrast/ for tips on updating to the new Forced Colors Mode standard.", source: https://assets.msn.com/bundles/v1/edgeChromium/latest/microsoft.cd13e829932b367f8bd4.js (377)
+[65184:61340:0830/171748.897:WARNING:chrome\browser\edge_underside\underside_helper.cc:1289] If test does not need FrontLoad, this may be expected. SetFrontLoadDecision: 3
+[65184:61340:0830/171748.898:WARNING:chrome\browser\ui\edge_window_tab_manager\api\wtm_image_web_contents_helper.cc:872] Favicon request has been preempted. Skipping.  old request_start_time=2025-08-30 14:17:41.022746 UTC, pending_favicon_request_start_time_=2025-08-30 14:17:44.265877 UTC
+[65184:61340:0830/171748.899:WARNING:chrome\browser\ui\edge_window_tab_manager\api\wtm_image_web_contents_helper.cc:872] Favicon request has been preempted. Skipping.  old request_start_time=2025-08-30 14:17:42.828296 UTC, pending_favicon_request_start_time_=2025-08-30 14:17:44.265877 UTC
+[64236:49880:0830/171749.255:INFO:components\services\edge_entity_extraction\extractor_impl.cc:990] ExtractorImpl::SetIsPendingEEConfig : 1
