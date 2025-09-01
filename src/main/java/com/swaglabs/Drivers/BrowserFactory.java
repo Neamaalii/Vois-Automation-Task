@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.io.File;
 import java.util.Map;
 
-public class BrowserFactory {
+public class   BrowserFactory {
 
 
 
