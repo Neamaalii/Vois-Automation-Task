@@ -22,34 +22,25 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # 3️⃣ Install Chrome + ChromeDriver
-      - name: Install Chrome + ChromeDriver
+      # 3️⃣ Install Chrome + Firefox + Edge browsers
+      - name: Install browsers
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
+          sudo apt-get install -y chromium-browser firefox microsoft-edge-stable unzip
 
-      # 4️⃣ Install Firefox + GeckoDriver
-      - name: Install Firefox + GeckoDriver
+      # 4️⃣ Copy WebDrivers from repo to /usr/local/bin
+      - name: Copy WebDrivers
         run: |
-          sudo apt-get install -y firefox
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
-          tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
-          sudo mv geckodriver /usr/local/bin/
+          sudo cp drivers/chromedriver /usr/local/bin/
+          sudo cp drivers/geckodriver /usr/local/bin/
+          sudo cp drivers/msedgedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver /usr/local/bin/geckodriver /usr/local/bin/msedgedriver
 
-      # 5️⃣ Install Edge + EdgeDriver (using apt)
-      - name: Install Microsoft Edge + WebDriver
-        run: |
-          sudo apt-get update
-          # Install Edge browser
-          sudo apt-get install -y microsoft-edge-stable
-          # Install EdgeDriver
-          sudo apt-get install -y msedge-driver
-
-      # 6️⃣ Run Maven tests
+      # 5️⃣ Run Maven tests
       - name: Run tests with Maven
         run: mvn clean test
 
-      # 7️⃣ Install Allure
+      # 6️⃣ Install Allure
       - name: Install Allure
         run: |
           wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.29.0.tgz
@@ -57,17 +48,13 @@ jobs:
           sudo mv allure-2.29.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
-      # 8️⃣ Generate Allure Report
+      # 7️⃣ Generate Allure Report
       - name: Generate Allure Report
         run: mvn allure:report
 
-      # 9️⃣ Upload Allure Report Artifact
+      # 8️⃣ Upload Allure Report Artifact
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: ./test-outputs/allure-report
-
-
-
-
