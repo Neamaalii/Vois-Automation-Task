@@ -47,13 +47,13 @@ jobs:
 
       - name: Install Microsoft Edge
         run: |
-          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_114.0.1823.82-1_amd64.deb
-          sudo dpkg -i microsoft-edge-stable_114.0.1823.82-1_amd64.deb
+          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_139.0.3405.125-1_amd64.deb
+          sudo dpkg -i microsoft-edge-stable_139.0.3405.125-1_amd64.deb
           sudo apt-get install -f -y
 
       - name: Install EdgeDriver
         run: |
-          wget https://msedgedriver.azureedge.net/114.0.1823.82/edgedriver_linux64.zip
+          wget https://msedgedriver.azureedge.net/139.0.3405.125/edgedriver_linux64.zip
           unzip edgedriver_linux64.zip
           sudo mv msedgedriver /usr/local/bin/
 
@@ -79,4 +79,5 @@ jobs:
         with:
           name: allure-report
           path: ./test-outputs/allure-report
+
 
