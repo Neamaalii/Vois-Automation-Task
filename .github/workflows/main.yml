@@ -22,43 +22,16 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # 3️⃣ Set environment variables for CI
-      - name: Set environment variables
-        run: |
-          echo "executionType=CI" >> $GITHUB_ENV
-          echo "browserType=Chrome" >> $GITHUB_ENV
-
-      # 4️⃣ Create required output directories
-      - name: Create output directories
-        run: |
-          mkdir -p test-outputs/allure-results
-          mkdir -p test-outputs/Screenshots
-          mkdir -p test-outputs/Logs
-
-      # 5️⃣ Install Chrome + ChromeDriver
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
+      - name: setup maven
+        uses: stCarolas/setup-maven@v5
         with:
-          chrome-version: stable
+              maven-version: 3.9.9
 
-      - name: Setup ChromeDriver
-        uses: browser-actions/setup-chromedriver@v1
-        with:
-          chromedriver-version: latest
 
-      # 6️⃣ Install Firefox + GeckoDriver (optional)
-      - name: Install Firefox
-        run: sudo apt-get install -y firefox
-
-      - name: Install GeckoDriver
-        run: |
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
-          tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
-          sudo mv geckodriver /usr/local/bin/
 
       # 7️⃣ Run tests
       - name: Run tests with Maven
-        run: mvn clean test
+        run: mvn -DexecutionType="localheadless" -Dtest="TestCases" clean test
 
       # 8️⃣ Install Allure
       - name: Install Allure
