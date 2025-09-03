@@ -20,10 +20,35 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      # Install Chrome + ChromeDriver
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
+      - name: Set up ChromeDriver
+        uses: browser-actions/setup-chromedriver@v1
+        with:
+          chromedriver-version: latest
+
+      # Install Firefox + GeckoDriver
+      - name: Set up Firefox
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: latest
+      - name: Set up GeckoDriver
+        uses: browser-actions/setup-geckodriver@v1
+        with:
+          geckodriver-version: latest
+
+      # Install Edge + EdgeDriver
+      - name: Set up Edge
+        uses: browser-actions/setup-edge@v1
+        with:
+          edge-version: stable
+      - name: Set up EdgeDriver
+        uses: browser-actions/setup-edgedriver@v1
+        with:
+          edgedriver-version: latest
 
       - name: Run tests with Maven
         run: mvn clean test
@@ -43,3 +68,4 @@ jobs:
         with:
           name: allure-report
           path: ./test-outputs/allure-report
+
