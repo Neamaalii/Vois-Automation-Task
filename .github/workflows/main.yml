@@ -32,7 +32,7 @@ jobs:
       # 7️⃣ Run tests
       - name: Run tests with Maven
         continue-on-error: true
-        run: mvn -DexecutionType="localheadless" -Dtest="TestCases" clean test
+        run: mvn -DexecutionType="local" -Dtest="TestCases" clean test
 
       # 8️⃣ Install Allure
       - name: Install Allure
