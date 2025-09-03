@@ -22,16 +22,31 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # 3️⃣ Install Chrome + ChromeDriver
+      # 3️⃣ Set environment variables for CI
+      - name: Set environment variables
+        run: |
+          echo "executionType=CI" >> $GITHUB_ENV
+          echo "browserType=Chrome" >> $GITHUB_ENV
+
+      # 4️⃣ Create required output directories
+      - name: Create output directories
+        run: |
+          mkdir -p test-outputs/allure-results
+          mkdir -p test-outputs/Screenshots
+          mkdir -p test-outputs/Logs
+
+      # 5️⃣ Install Chrome + ChromeDriver
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
 
-      - name: Install ChromeDriver
-        run: sudo apt-get install -y chromium-chromedriver
+      - name: Setup ChromeDriver
+        uses: browser-actions/setup-chromedriver@v1
+        with:
+          chromedriver-version: latest
 
-      # 4️⃣ Install Firefox + GeckoDriver
+      # 6️⃣ Install Firefox + GeckoDriver (optional)
       - name: Install Firefox
         run: sudo apt-get install -y firefox
 
@@ -41,11 +56,11 @@ jobs:
           tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
 
-      # 5️⃣ Run tests
+      # 7️⃣ Run tests
       - name: Run tests with Maven
         run: mvn clean test
 
-      # 6️⃣ Install Allure
+      # 8️⃣ Install Allure
       - name: Install Allure
         run: |
           wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.29.0.tgz
@@ -53,11 +68,11 @@ jobs:
           sudo mv allure-2.29.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
-      # 7️⃣ Generate Allure Report
+      # 9️⃣ Generate Allure Report
       - name: Generate Allure Report
         run: mvn allure:report
 
-      # 8️⃣ Upload Allure Report Artifact
+      # 🔟 Upload Allure Report Artifact
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
