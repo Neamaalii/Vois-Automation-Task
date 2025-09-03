@@ -47,7 +47,7 @@
   </component>
   <component name="RunManager" selected="TestNG.D:/YoutubeDemo/testng.xml">
     <configuration name="D:/YoutubeDemo/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="YoutubeDemo" />
+      <module name="VoisAutomationTask" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
       <option name="TEST_OBJECT" value="SUITE" />
       <properties />
@@ -57,7 +57,7 @@
       </method>
     </configuration>
     <configuration name="SearchPageTwo.redirectTosecondPage" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="YoutubeDemo" />
+      <module name="VoisAutomationTask" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.swaglabs.Pages.*" />
@@ -75,7 +75,7 @@
       </method>
     </configuration>
     <configuration name="TestCases.comparebetween2results" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="YoutubeDemo" />
+      <module name="VoisAutomationTask" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.swaglabs.Tests.*" />
@@ -93,7 +93,7 @@
       </method>
     </configuration>
     <configuration name="TestCases.success_Search" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="YoutubeDemo" />
+      <module name="VoisAutomationTask" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.swaglabs.Tests.*" />
@@ -111,7 +111,7 @@
       </method>
     </configuration>
     <configuration name="TestCases.verifyFirstSectionItemsContainVodafone" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="YoutubeDemo" />
+      <module name="VoisAutomationTask" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.swaglabs.Tests.*" />

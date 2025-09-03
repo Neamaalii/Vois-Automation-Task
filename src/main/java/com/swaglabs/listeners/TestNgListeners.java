@@ -13,6 +13,7 @@ import static com.swaglabs.Utils.propertiesUtils.loadProperties;
 public class TestNgListeners implements IExecutionListener, ITestListener, IInvokedMethodListener {
     File allure_results=new File("test-outputs/allure-results");
     File logs =new File("test-outputs/Logs");
+    File screenshots=new File("test-outputs/Screenshots");
 
     @Override
     public void onExecutionStart() {
@@ -20,6 +21,12 @@ public class TestNgListeners implements IExecutionListener, ITestListener, IInvo
         loadProperties();
         FileUtils.deletefiles(allure_results);
         FileUtils.cleanDirectory(logs);
+        FileUtils.cleanDirectory(screenshots);
+        FileUtils.createDirectory(allure_results);
+        FileUtils.createDirectory(logs);
+        FileUtils.createDirectory(allure_results);
+
+
     }
 
     @Override
