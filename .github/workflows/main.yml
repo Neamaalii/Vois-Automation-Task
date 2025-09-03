@@ -15,51 +15,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Set up JDK
-      - name: Set up JDK 21
+      # 2️⃣ Set up JDK 21
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
 
       # 3️⃣ Install Chrome + ChromeDriver
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-
-      - name: Install ChromeDriver
-        run: sudo apt-get install -y chromium-chromedriver
+      - name: Install Chrome + ChromeDriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser chromium-chromedriver
 
       # 4️⃣ Install Firefox + GeckoDriver
-      - name: Install Firefox
-        run: sudo apt-get install -y firefox
-
-      - name: Install GeckoDriver
+      - name: Install Firefox + GeckoDriver
         run: |
+          sudo apt-get install -y firefox
           wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
           tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
 
-      # 5️⃣ Install Edge + EdgeDriver
-      - name: Install dependencies for Edge
-        run: sudo apt-get update && sudo apt-get install -y libu2f-udev
-
-      - name: Install Microsoft Edge
+      # 5️⃣ Install Edge + EdgeDriver (using apt)
+      - name: Install Microsoft Edge + WebDriver
         run: |
-          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_139.0.3405.125-1_amd64.deb
-          sudo dpkg -i microsoft-edge-stable_139.0.3405.125-1_amd64.deb
-          sudo apt-get install -f -y
+          sudo apt-get update
+          # Install Edge browser
+          sudo apt-get install -y microsoft-edge-stable
+          # Install EdgeDriver
+          sudo apt-get install -y msedge-driver
 
-      - name: Install EdgeDriver
-        run: |
-          curl -LO https://msedgedriver.azureedge.net/LATEST_RELEASE
-          LATEST_VERSION=$(cat LATEST_RELEASE)
-          curl -LO https://msedgedriver.azureedge.net/$LATEST_VERSION/edgedriver_linux64.zip --retry 5
-          unzip edgedriver_linux64.zip
-          sudo mv msedgedriver /usr/local/bin/
-
-      # 6️⃣ Run tests
+      # 6️⃣ Run Maven tests
       - name: Run tests with Maven
         run: mvn clean test
 
@@ -81,6 +67,7 @@ jobs:
         with:
           name: allure-report
           path: ./test-outputs/allure-report
+
 
 
 
