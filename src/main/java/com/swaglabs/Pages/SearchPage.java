@@ -3,29 +3,31 @@ package com.swaglabs.Pages;
 import com.swaglabs.Utils.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.util.List;
-
-import static com.swaglabs.Utils.propertiesUtils.getPropertyValue;
-
 
 public class SearchPage
 {
- //Locators
  private final WebDriver driver;
+
+ //=================Locators=================
 
  private final By firstRelatedSection =
          By.xpath("//span[@aria-level=\"2\"] //following::div/a[@class='ngTNl ggLgoc']");
 
 
- //constructor
+ //=================constructor =================
  public SearchPage(WebDriver driver) {
   this.driver = driver;
  }
+
+
+
+ //=================Actions=================
+
+ // * Verify that all elements in the first related section contain the expected text.
 
  @Step("verify That Section Contains Vodafone")
  public SearchPage verifyThatSectionContainsVodafone(String expectedText)
@@ -38,8 +40,6 @@ public class SearchPage
   }
   return this;
  }
-
-
 
 
 }

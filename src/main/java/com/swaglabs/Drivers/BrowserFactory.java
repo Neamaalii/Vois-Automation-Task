@@ -10,33 +10,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
-import java.io.File;
 import java.util.Map;
 
+
+/**
+ * BrowserFactory is responsible for creating WebDriver instances for different browsers.
+ * Supports Chrome, Firefox, and Edge.
+ * Provides browser-specific options and handles headless execution on Linux (like CI environments).
+ */
+
 public class   BrowserFactory {
-
-
-
-    // Kill all Edge processes (browser + driver)
-    public static void killEdgeProcesses() {
-        try {
-            String os = System.getProperty("os.name").toLowerCase();
-
-            if (os.contains("win")) {
-                Runtime.getRuntime().exec("taskkill /F /IM msedge.exe /T");
-                Runtime.getRuntime().exec("taskkill /F /IM msedgedriver.exe /T");
-            } else {
-                // For Linux/macOS
-                Runtime.getRuntime().exec("pkill -f msedge");
-                Runtime.getRuntime().exec("pkill -f msedgedriver");
-            }
-
-            System.out.println("✅ Edge processes killed successfully.");
-        } catch (Exception e) {
-            System.err.println("❌ Failed to kill Edge processes: " + e.getMessage());
-        }
-    }
 
 
     public static WebDriver getBrowser(String browser) {
@@ -57,12 +40,6 @@ public class   BrowserFactory {
                 driver = new ChromeDriver(getChromeOptions());
         }
 
-        if (driver instanceof JavascriptExecutor &&
-                (browser.equalsIgnoreCase("chrome") || browser.equalsIgnoreCase("edge"))) {
-            ((JavascriptExecutor) driver).executeScript(
-                    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-            );
-        }
 
         return driver;
     }
@@ -92,9 +69,17 @@ public class   BrowserFactory {
         chromeOptions.setExperimentalOption("prefs", prefs);
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        if (!propertiesUtils.getPropertyValue("executionType").equalsIgnoreCase("local")) {
-            chromeOptions.addArguments("--headless=new"); // headless new for Chrome 109+
+        String executionType = propertiesUtils.getPropertyValue("executionType");
+        System.out.println("✅ Execution type = " + executionType);
+
+        // Always run headless on Linux (like GitHub Actions)
+        String os = System.getProperty("os.name").toLowerCase();
+        if ((executionType == null || !executionType.equalsIgnoreCase("local")) || os.contains("linux")) {
+            chromeOptions.addArguments("--headless=new");
         }
+
+
+
 
         return chromeOptions;
     }
@@ -116,7 +101,12 @@ public class   BrowserFactory {
         edgeOptions.setExperimentalOption("prefs", prefs);
         edgeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        if (!propertiesUtils.getPropertyValue("executionType").equalsIgnoreCase("local")) {
+        String executionType = propertiesUtils.getPropertyValue("executionType");
+        String os = System.getProperty("os.name").toLowerCase();
+        System.out.println("✅ Edge Execution type = " + executionType);
+
+        if ((executionType == null || !executionType.equalsIgnoreCase("local")) || os.contains("linux"))
+        {
             edgeOptions.addArguments("--headless=new");
         }
         return edgeOptions;
@@ -129,7 +119,11 @@ public class   BrowserFactory {
         firefoxOptions.addArguments("--height=1080");
         firefoxOptions.addArguments("--disable-notifications");
 
-        if (!propertiesUtils.getPropertyValue("executionType").equalsIgnoreCase("local")) {
+        String executionType = propertiesUtils.getPropertyValue("executionType");
+        String os = System.getProperty("os.name").toLowerCase();
+        System.out.println("✅ Firefox Execution type = " + executionType);
+
+        if ((executionType == null || !executionType.equalsIgnoreCase("local")) || os.contains("linux")) {
             firefoxOptions.addArguments("--headless");
         }
         firefoxOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);

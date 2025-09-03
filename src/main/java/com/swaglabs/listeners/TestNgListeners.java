@@ -11,29 +11,24 @@ import java.io.File;
 import static com.swaglabs.Utils.propertiesUtils.loadProperties;
 
 public class TestNgListeners implements IExecutionListener, ITestListener, IInvokedMethodListener {
-    File allure_results=new File("test-outputs/allure-results");
-    File logs =new File("test-outputs/Logs");
-    File screenshots=new File("test-outputs/Screenshots");
+    File allure_results = new File("test-outputs/allure-results");
+    File logs = new File("test-outputs/Logs");
+    File screenshots = new File("test-outputs/Screenshots");
 
     @Override
     public void onExecutionStart() {
         LogsUtils.info("Test Exeution started");
         loadProperties();
+        FileUtils.cleanDirectory(screenshots);
         FileUtils.deletefiles(allure_results);
         FileUtils.cleanDirectory(logs);
-        FileUtils.cleanDirectory(screenshots);
-        FileUtils.createDirectory(allure_results);
-        FileUtils.createDirectory(logs);
-        FileUtils.createDirectory(allure_results);
-
-
+        FileUtils.createDirectory(screenshots);
     }
 
     @Override
-    public void onExecutionFinish()
-    {
+    public void onExecutionFinish() {
 
-LogsUtils.info("Test Exeution finished");
+        LogsUtils.info("Test Exeution finished");
     }
 
     @Override
@@ -43,13 +38,11 @@ LogsUtils.info("Test Exeution finished");
 
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-        if (method.isTestMethod())
-        {
-            switch (testResult.getStatus())
-            {
-                case ITestResult.SUCCESS ->   ScreenShotUtils.takeScreenShot("Passed-"+testResult.getName());
-                case ITestResult.FAILURE ->   ScreenShotUtils.takeScreenShot("failed-"+testResult.getName());
-                case ITestResult.SKIP ->   ScreenShotUtils.takeScreenShot("Skipped-"+testResult.getName());
+        if (method.isTestMethod()) {
+            switch (testResult.getStatus()) {
+                case ITestResult.SUCCESS -> ScreenShotUtils.takeScreenShot("Passed-" + testResult.getName());
+                case ITestResult.FAILURE -> ScreenShotUtils.takeScreenShot("failed-" + testResult.getName());
+                case ITestResult.SKIP -> ScreenShotUtils.takeScreenShot("Skipped-" + testResult.getName());
 
             }
             allureUtils.attachLogsToAllureReport();
@@ -57,30 +50,30 @@ LogsUtils.info("Test Exeution finished");
         }
 
     }
+
     // result.getName() الميثود اللي اسمها كذا كانت باص
     @Override
     public void onTestStart(ITestResult result) {
-        LogsUtils.info( result.getName()+ "started");
+        LogsUtils.info(result.getName() + "started");
     }
 
 
     public void onTestSuccess(ITestResult result) {
 
-        LogsUtils.info("TestCase" + result.getName()+ "passed");
+        LogsUtils.info("TestCase" + result.getName() + "passed");
     }
 
 
     public void onTestFailure(ITestResult result) {
-        LogsUtils.info("TestCase" + result.getName()+ "failed");
-        ScreenShotUtils.takeScreenShot("fail-"+result.getName());
+        LogsUtils.info("TestCase" + result.getName() + "failed");
+        ScreenShotUtils.takeScreenShot("fail-" + result.getName());
 
     }
 
-    public void onTestSkipped(ITestResult result)
-    {
+    public void onTestSkipped(ITestResult result) {
 
-        LogsUtils.info("TestCase" + result.getName()+ "skipped");
-        ScreenShotUtils.takeScreenShot("skipped-"+result.getName());
+        LogsUtils.info("TestCase" + result.getName() + "skipped");
+        ScreenShotUtils.takeScreenShot("skipped-" + result.getName());
 
     }
 

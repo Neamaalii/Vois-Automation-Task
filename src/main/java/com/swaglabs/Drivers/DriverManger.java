@@ -6,11 +6,18 @@ import org.openqa.selenium.WebDriver;
 
 import static org.testng.Assert.fail;
 
+
+/**
+ * DriverManger is responsible for managing WebDriver instances in a thread-safe way.
+ * Uses ThreadLocal to allow parallel test execution where each test gets its own WebDriver instance.
+ * Provides methods to create, set, and get the WebDriver.
+ */
+
 public class DriverManger
 {
     private static final ThreadLocal<WebDriver> driverThreadLocal =new ThreadLocal<>();
 
-    // تشغل تيستات بالتوازى بدون مشاكل وكل تيست عنده درايفر خاص بيه
+
 
 @Step("create driver instant on : {browsername}")
 

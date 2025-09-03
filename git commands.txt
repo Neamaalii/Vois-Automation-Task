@@ -1,3 +1,7 @@
 1.git init > Initialize a new Git repository
 2.git add <file> Stage a file for commit || git add. > Stage all changes
 3.git commit -m 'message' > commit staged changes with a message
+4.git rm --cached . -r > remove cached files
+5.git log >show commit history
+6.git rm --cached . -r > unstage files
+7.git reset --hard HEAD > discard all changes in the WD

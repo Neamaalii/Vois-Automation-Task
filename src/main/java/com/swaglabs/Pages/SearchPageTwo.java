@@ -8,13 +8,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 
 public class SearchPageTwo
 {
- //Locators
  private final WebDriver driver;
+
+ //=================Locators=================
+
 
  private By clickonsecondpage=By.xpath("//a[@aria-label='Page 2']");
  private By searchResultsSecondPage= By.xpath("//a /h3");
@@ -25,7 +26,7 @@ public class SearchPageTwo
 
 
 
- //constructor
+ //=================constructor =================
  public SearchPageTwo(WebDriver driver)
  {
   this.driver = driver;
@@ -49,7 +50,6 @@ public class SearchPageTwo
 
  //click on page number 3
 
-
  public void goToThirdPage()
  {
   LogsUtils.info("click on the 2 page ");
@@ -62,7 +62,6 @@ public class SearchPageTwo
  }
 
 
- //validation
  @Step("Count the number of results displayed on the second page")
  public int Page2count ()
  {
@@ -90,6 +89,9 @@ public class SearchPageTwo
 
   return counter2;
  }
+
+
+ //Verify that the number of search results on Page 2 equals the number on Page 3.
 
 @Step("verifyResultsCountIsEqualBetweenPage2AndPage3 ")
  public void verifyResultsCountIsEqualBetweenPage2AndPage3()
