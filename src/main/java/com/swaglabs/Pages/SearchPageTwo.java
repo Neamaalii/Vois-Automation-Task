@@ -1,5 +1,6 @@
 package com.swaglabs.Pages;
 
+import com.swaglabs.Utils.ElementActions;
 import com.swaglabs.Utils.JSUtils;
 import com.swaglabs.Utils.LogsUtils;
 import com.swaglabs.Utils.Waits;
@@ -42,23 +43,18 @@ public class SearchPageTwo
   LogsUtils.info("click on the 2 page ");
 
   // Scroll to the page 2 link
-   JSUtils.scrollToElement(driver,clickonsecondpage);
-   // Wait until it's clickable
-  WebElement element2=Waits.WaitForElementToBeClickable(driver,clickonsecondpage);
-  element2.click();
+  ElementActions.ClickElement(driver,clickonsecondpage);
  }
 
  //click on page number 3
 
  public void goToThirdPage()
  {
-  LogsUtils.info("click on the 2 page ");
+  LogsUtils.info("click on the 3 page ");
 
   // Scroll to the page 3 link
-  JSUtils.scrollToElement(driver,clickonthirdpage);
-  // Wait until it's clickable
-  WebElement element3=Waits.WaitForElementToBeClickable(driver,clickonthirdpage);
-  element3.click();
+  ElementActions.ClickElement(driver,clickonthirdpage);
+
  }
 
 

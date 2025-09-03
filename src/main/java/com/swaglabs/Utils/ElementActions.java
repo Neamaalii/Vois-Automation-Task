@@ -21,7 +21,7 @@ public class ElementActions
 
     public static void ClickElement(WebDriver driver , By locator )
     {
-        Waits.WaitForElementToBeVisible(driver,locator);
+        Waits.WaitForElementToBeClickable(driver,locator);
         JSUtils.scrollToElement(driver, locator);
         findelement(driver,locator).click();
     }
