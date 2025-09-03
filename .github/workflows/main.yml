@@ -15,28 +15,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Set up JDK 21
-      - name: Set up JDK
+      # 2️⃣ Set up JDK
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
 
-      # 3️⃣ Install Chrome + Firefox + Edge browsers
-      - name: Install browsers
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser firefox microsoft-edge-stable unzip
+      # 3️⃣ Install Chrome + ChromeDriver
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
-      # 4️⃣ Copy WebDrivers from repo to /usr/local/bin
-      - name: Copy WebDrivers
-        run: |
-          sudo cp drivers/chromedriver /usr/local/bin/
-          sudo cp drivers/geckodriver /usr/local/bin/
-          sudo cp drivers/msedgedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver /usr/local/bin/geckodriver /usr/local/bin/msedgedriver
+      - name: Install ChromeDriver
+        run: sudo apt-get install -y chromium-chromedriver
 
-      # 5️⃣ Run Maven tests
+      # 4️⃣ Install Firefox + GeckoDriver
+      - name: Install Firefox
+        run: sudo apt-get install -y firefox
+
+      - name: Install GeckoDriver
+        run: |
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+          tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
+          sudo mv geckodriver /usr/local/bin/
+
+      # 5️⃣ Run tests
       - name: Run tests with Maven
         run: mvn clean test
 
