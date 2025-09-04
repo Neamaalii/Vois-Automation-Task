@@ -1,4 +1,4 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +15,7 @@ public class LogsUtils {
         return LogManager.getLogger(Thread.currentThread().getStackTrace()[3].getClassName());
 
     }
-    //Sending more than one parameter
+    //================Utility methods for logging at different levels==================
     public static void trace(String... message) {
         logger().trace(String.join("", message));
     }

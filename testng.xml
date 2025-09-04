@@ -3,7 +3,7 @@
     <test name=" Test One">
         <parameter name="browserType" value="chrome" />
         <classes>
-            <class name="com.swaglabs.Tests.TestCases" />
+            <class name="com.vois.Tests.TestCases" />
             <methods>
             <include name="success_Search"/>
             </methods>
@@ -14,7 +14,7 @@
     <test name=" Test Two">
         <parameter name="browserType" value="chrome" />
         <classes>
-            <class name="com.swaglabs.Tests.TestCases" />
+            <class name="com.vois.Tests.TestCases" />
             <methods>
                 <include name="success_Search"/>
                 <include name="verifyFirstSectionItemsContainVodafone"/>
@@ -25,7 +25,7 @@
     <test name=" Test Three">
         <parameter name="browserType" value="chrome" />
         <classes>
-            <class name="com.swaglabs.Tests.TestCases" />
+            <class name="com.vois.Tests.TestCases" />
             <methods>
                 <include name="success_Search"/>
                 <include name="comparebetween2results"/>

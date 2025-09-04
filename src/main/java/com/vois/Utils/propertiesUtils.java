@@ -1,4 +1,4 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -39,7 +39,7 @@ public class propertiesUtils
 }
     }
 
-    // Get the value of the property
+    // =================Get the value of the property=================
     public static String getPropertyValue(String key) {
 
         try {

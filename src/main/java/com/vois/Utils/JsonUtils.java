@@ -1,12 +1,10 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
-import com.google.gson.JsonParser;
 import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.io.IOException;
 
 public class JsonUtils
 {
@@ -27,7 +25,6 @@ public class JsonUtils
             LogsUtils.error(e.getMessage());
         }
     }
-    //login-credentials.username
     public String getJsonData(String jsonPath) {
         String testData = "";
         try {

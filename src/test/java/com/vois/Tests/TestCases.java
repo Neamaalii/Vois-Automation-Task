@@ -1,13 +1,12 @@
-package com.swaglabs.Tests;
+package com.vois.Tests;
 
-import com.swaglabs.Drivers.DriverManger;
-import com.swaglabs.Pages.GooglePage;
-import com.swaglabs.Pages.SearchPage;
-import com.swaglabs.Pages.SearchPageTwo;
-import com.swaglabs.Utils.*;
-import com.swaglabs.listeners.TestNgListeners;
+import com.vois.Drivers.DriverManger;
+import com.vois.Pages.GooglePage;
+import com.vois.Pages.SearchPage;
+import com.vois.Pages.SearchPageTwo;
+import com.vois.Utils.*;
+import com.vois.listeners.TestNgListeners;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TestNgListeners.class)
@@ -29,11 +28,8 @@ public class TestCases {
             browser_name = browserNameFromXML;
         }
 
-        // إنشاء driver مرة واحدة لكل الـ tests
         DriverManger.create_instance(browser_name);
         driver = DriverManger.get_driver();
-
-        // فتح الصفحة مرة واحدة
         new GooglePage(driver).gotourl();
     }
 

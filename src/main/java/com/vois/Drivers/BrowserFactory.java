@@ -1,7 +1,6 @@
-package com.swaglabs.Drivers;
+package com.vois.Drivers;
 
-import com.swaglabs.Utils.propertiesUtils;
-import org.openqa.selenium.JavascriptExecutor;
+import com.vois.Utils.propertiesUtils;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -77,10 +76,6 @@ public class   BrowserFactory {
         if ((executionType == null || !executionType.equalsIgnoreCase("local")) || os.contains("linux")) {
             chromeOptions.addArguments("--headless=new");
         }
-
-
-
-
         return chromeOptions;
     }
 
@@ -114,7 +109,6 @@ public class   BrowserFactory {
 
     public static FirefoxOptions getFirefoxOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-
         firefoxOptions.addArguments("--width=1920");
         firefoxOptions.addArguments("--height=1080");
         firefoxOptions.addArguments("--disable-notifications");

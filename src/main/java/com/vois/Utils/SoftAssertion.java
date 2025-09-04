@@ -1,4 +1,4 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 import org.testng.asserts.SoftAssert;
 
 public class SoftAssertion extends SoftAssert
@@ -12,7 +12,7 @@ public class SoftAssertion extends SoftAssert
         }
         catch (AssertionError error)
         {
-            System.out.println("soft assert failed");
+            LogsUtils.error("soft assert failed");
             throw error;
         }
 

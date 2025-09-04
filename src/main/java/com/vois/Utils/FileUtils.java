@@ -1,4 +1,4 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
 import java.io.File;
 import java.io.IOException;

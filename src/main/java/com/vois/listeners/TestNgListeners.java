@@ -1,14 +1,14 @@
-package com.swaglabs.listeners;
+package com.vois.listeners;
 
-import com.swaglabs.Utils.FileUtils;
-import com.swaglabs.Utils.LogsUtils;
-import com.swaglabs.Utils.ScreenShotUtils;
-import com.swaglabs.Utils.allureUtils;
+import com.vois.Utils.FileUtils;
+import com.vois.Utils.LogsUtils;
+import com.vois.Utils.ScreenShotUtils;
+import com.vois.Utils.allureUtils;
 import org.testng.*;
 
 import java.io.File;
 
-import static com.swaglabs.Utils.propertiesUtils.loadProperties;
+import static com.vois.Utils.propertiesUtils.loadProperties;
 
 public class TestNgListeners implements IExecutionListener, ITestListener, IInvokedMethodListener {
     File allure_results = new File("test-outputs/allure-results");
@@ -49,8 +49,6 @@ public class TestNgListeners implements IExecutionListener, ITestListener, IInvo
         }
 
     }
-
-    // result.getName() الميثود اللي اسمها كذا كانت باص
     @Override
     public void onTestStart(ITestResult result) {
         LogsUtils.info(result.getName() + "started");

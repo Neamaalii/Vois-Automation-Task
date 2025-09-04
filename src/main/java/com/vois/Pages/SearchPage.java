@@ -1,6 +1,6 @@
-package com.swaglabs.Pages;
+package com.vois.Pages;
 
-import com.swaglabs.Utils.*;
+import com.vois.Utils.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

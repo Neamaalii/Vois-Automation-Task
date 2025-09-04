@@ -1,12 +1,8 @@
-package com.swaglabs.Drivers;
-
-import com.swaglabs.Utils.LogsUtils;
+package com.vois.Drivers;
+import com.vois.Utils.LogsUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-
 import static org.testng.Assert.fail;
-
-
 /**
  * DriverManger is responsible for managing WebDriver instances in a thread-safe way.
  * Uses ThreadLocal to allow parallel test execution where each test gets its own WebDriver instance.
@@ -16,9 +12,6 @@ import static org.testng.Assert.fail;
 public class DriverManger
 {
     private static final ThreadLocal<WebDriver> driverThreadLocal =new ThreadLocal<>();
-
-
-
 @Step("create driver instant on : {browsername}")
 
     public static WebDriver create_instance(String browsername)
@@ -29,8 +22,6 @@ public class DriverManger
   return get_driver();
 
     }
-
-
     public static void set_driver(WebDriver driver)
     {
         driverThreadLocal.set(driver);
@@ -46,9 +37,4 @@ if (driverThreadLocal.get()==null)
 return driverThreadLocal.get();
 
     }
-
-
-
-
-
 }

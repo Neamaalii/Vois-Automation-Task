@@ -1,6 +1,6 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
-import com.swaglabs.Drivers.DriverManger;
+import com.vois.Drivers.DriverManger;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

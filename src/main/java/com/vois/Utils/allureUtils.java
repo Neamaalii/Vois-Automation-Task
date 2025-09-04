@@ -1,9 +1,8 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
 import io.qameta.allure.Allure;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 

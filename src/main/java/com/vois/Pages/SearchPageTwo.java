@@ -1,9 +1,8 @@
-package com.swaglabs.Pages;
+package com.vois.Pages;
 
-import com.swaglabs.Utils.ElementActions;
-import com.swaglabs.Utils.JSUtils;
-import com.swaglabs.Utils.LogsUtils;
-import com.swaglabs.Utils.Waits;
+import com.vois.Utils.ElementActions;
+import com.vois.Utils.LogsUtils;
+import com.vois.Utils.Validation;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -97,12 +96,10 @@ public class SearchPageTwo
  goToThirdPage();
 int page3counter=Page3count();
 
+//=================Assertion between counter of the 2 pages =================
 
-  Assert.assertEquals(page2counter,page3counter,
-
-          "❌ Number of results on Page 2 ( " + page2counter + " ) " +
-                  "is not equal to Page 3 ( "  + page3counter +")");
-
+ Validation.validateEqual(page2counter,page3counter,"❌ Number of results on Page 2 ( " + page2counter + " ) " +
+         "is not equal to Page 3 ( "  + page3counter +")");
 }
 
 }

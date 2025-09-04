@@ -1,11 +1,11 @@
-package com.swaglabs.Pages;
+package com.vois.Pages;
 
-import com.swaglabs.Utils.*;
+import com.vois.Utils.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import static com.swaglabs.Utils.propertiesUtils.getPropertyValue;
+import static com.vois.Utils.propertiesUtils.getPropertyValue;
 
 
 public class GooglePage {

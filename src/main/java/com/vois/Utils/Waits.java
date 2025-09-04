@@ -1,4 +1,4 @@
-package com.swaglabs.Utils;
+package com.vois.Utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class Waits
 {
@@ -27,14 +26,6 @@ public class Waits
                             return element.isDisplayed() ? element : null ;
                         }
                 );
-    }
-    //gdedaaaaaa
-    public static List<WebElement> WaitForElementsToBeVisible(WebDriver driver, By locator) {
-        return new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(driver1 -> {
-                    List<WebElement> elements = driver1.findElements(locator);
-                    return elements.stream().anyMatch(WebElement::isDisplayed) ? elements : null;
-                });
     }
 
     //wait for element to be Clickable
